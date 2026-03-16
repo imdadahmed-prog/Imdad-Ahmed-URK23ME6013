@@ -1,0 +1,49 @@
+package shape;
+
+// Interface must be accessible to the classes
+interface Shape {
+    void area();
+}
+
+// Implementing class 1
+class Rectangle implements Shape {
+    int length, breadth;
+
+    Rectangle(int l, int b) {
+        this.length = l;
+        this.breadth = b;
+    }
+
+    @Override // Good practice to use @Override
+    public void area() {
+        System.out.println("Area of Rectangle: " + (length * breadth));
+    }
+}
+
+// Implementing class 2
+class Circle implements Shape {
+    double radius;
+
+    Circle(double r) {
+        this.radius = r;
+    }
+
+    @Override
+    public void area() {
+        // Using Math.PI is more accurate than 3.14
+        System.out.println("Area of Circle: " + (3.14 * radius * radius));
+    }
+}
+
+// This class name must match the filename (InterfacePolymorphismDemo.java)
+public class Polymorphism {
+    public static void main(String[] args) {
+        Shape s; // Interface reference
+
+        s = new Rectangle(10, 5);
+        s.area(); // Calls Rectangle's area()
+
+        s = new Circle(7);
+        s.area(); // Calls Circle's area()
+    }
+}
